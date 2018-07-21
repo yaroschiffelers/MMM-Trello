@@ -105,7 +105,8 @@ Module.register("MMM-Trello", {
             en: "translations/en.json",
             de: "translations/de.json",
             sv: "translations/sv.json",
-            pl: "translations/pl.json"
+            pl: "translations/pl.json",
+            nl: "translations/pl.json"
         };
     },
 
