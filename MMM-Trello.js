@@ -24,7 +24,8 @@ Module.register("MMM-Trello", {
         showChecklists: true,
         showChecklistTitle: false,
         wholeList: false,
-        isCompleted: false
+        isCompleted: false,
+        title: "Trello"
     },
 
     // Define start sequence.
@@ -114,6 +115,14 @@ Module.register("MMM-Trello", {
     getDom: function () {
         var wrapper = document.createElement("div");
 
+        if (this.config.title) {
+            var header = document.createElement("div");
+            header.innerHTML = this.config.title;
+            header.className = "light small dimmed"
+            header.style.textAlign = 'left';
+            wrapper.appendChild(header)
+        }
+
         if (this.activeItem >= this.listContent.length) {
             this.activeItem = 0;
         }
@@ -131,7 +140,7 @@ Module.register("MMM-Trello", {
                 for (card = startat; card <= endat; card++) {
                     if (this.config.showTitle || this.config.showDueDate) {
                         var name = document.createElement("div");
-                        name.className = "medium light " + (this.config.isCompleted ? "is-completed" : "bright");
+                        name.className = "small light " + (this.config.isCompleted ? "is-completed" : "bright");
 
                         content = "";
                         if (this.config.showTitle) {
